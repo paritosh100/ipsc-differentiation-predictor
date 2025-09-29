@@ -1,32 +1,61 @@
 
 # iPSC Differentiation Predictor
 
-This project simulates and models induced pluripotent stem cell (iPSC) differentiation outcomes based on experimental inputs. It aims to predict quality control metrics like Purity, Viability, and Yield using protocol variables and gene expression markers.
+This project is a science-meets-data exploration aimed at improving how we grow stem cells in the lab.
 
-## 📁 Project Structure
+---
 
-- `01_data_generation.ipynb`: Simulates a realistic iPSC differentiation dataset.
-- `02_eda.ipynb`: Explores variable distributions, correlations, and biological relevance.
-- `03_modeling.ipynb`: (To be added) Train ML models to predict differentiation outcomes.
-- `04_dashboard.py`: (To be added) Streamlit app for protocol input and outcome prediction.
+## 🧬 What Is This About?
 
-## 📊 Features
+Scientists grow stem cells (specifically iPSCs — induced pluripotent stem cells) in the lab to turn them into different types of tissues — like neurons, liver cells, or heart cells. But getting the best quality cells depends on *how* you grow them: which proteins you add, how much oxygen is in the dish, how many cells you start with, and more.
 
-- Synthetic dataset generation based on biological assumptions
-- Exploratory Data Analysis (EDA) with domain insights
-- Pearson correlation with statistical significance
-- Modular notebooks with step-wise documentation
+This project builds a simulation of those lab conditions and uses data science to figure out:
 
-## 🚀 How to Run
+- What makes some cell batches healthier than others?
+- Which combinations of lab conditions give the best results?
+- Can we predict the success of an experiment before it happens?
 
-1. Clone the repo
-2. Install dependencies (e.g., pandas, matplotlib, seaborn, scipy)
-3. Run notebooks in order: `01_` → `02_` → `03_`
+---
 
-## 🧬 Motivation
+## 📊 What Did We Build?
 
-Inspired by the protocol optimization goals of companies like Trailhead Biosystems, this project shows how data science can help design better stem cell experiments.
+- A **simulated dataset** based on real-world biology
+- Tools to **analyze patterns** in how stem cells grow
+- A plan for using **machine learning** to predict and improve future experiments
 
-## 📝 License
+Even though the data is synthetic (not from a real lab), it's based on real scientific principles — so it's a safe way to test ideas.
 
-MIT License
+---
+
+## 👩‍💻 What's Inside?
+
+- **01_data_generation.ipynb** — creates mock data based on biology
+- **02_eda.ipynb** — explores how lab inputs affect outcomes
+- **03_modeling.ipynb** — (coming soon) predicts stem cell quality
+- **04_dashboard.py** — (coming soon) an app to test your own lab recipes
+
+---
+
+## 🎯 Why Does It Matter?
+
+This project shows how data can help scientists:
+- Save time and money in experiments
+- Make better decisions about lab protocols
+- Bring stem cell therapies to patients faster
+
+It’s inspired by real biotech companies working at the edge of biology and AI.
+
+---
+
+## ✅ How To Use
+
+If you’re a developer, data scientist, or student:
+1. Clone this repo
+2. Install Python libraries
+3. Open the notebooks and explore step-by-step
+
+---
+
+## 📜 License
+
+Open-source, MIT License — free to use for learning or building!

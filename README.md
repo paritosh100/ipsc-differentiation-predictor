@@ -17,7 +17,7 @@ This project builds a simulation of those lab conditions and uses data science t
 
 ---
 
-## 📊 What Did We Build?
+## 📊 What Did I Build?
 
 - A **simulated dataset** based on real-world biology
 - Tools to **analyze patterns** in how stem cells grow

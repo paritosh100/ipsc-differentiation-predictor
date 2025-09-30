@@ -55,7 +55,7 @@ This project simulates and models the process of differentiating induced pluripo
 
 ## 🧪 For Non-Technical Readers
 
-Imagine you're trying to cook the perfect dish using different ingredients. You vary the amounts of spices, the cooking temperature, and time — and record the outcome.
+Imagine you're trying to cook the perfect dish using different ingredients. You vary the amounts of spices, the cooking temperature, and time, and record the outcome.
 
 This project does the same, but for **stem cell experiments**. It analyzes how changing **inputs** (like BMP4 levels or gene activity) affects **results** (like how many cells turned into the right type, or how pure and alive they are).
 

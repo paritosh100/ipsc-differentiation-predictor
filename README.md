@@ -16,12 +16,7 @@ This project simulates and models the process of differentiating induced pluripo
 | `.gitignore` | Excludes virtualenv, system files from version control |
 
 ---
-
-<<<<<<< HEAD
-## 📊 What This Project Does
-=======
 ## 📊 What Did I Build?
->>>>>>> a8b7cd5b9250ae9c3f4628d8af8f78343cecada5
 
 - Simulates data for 120 iPSC differentiation batches with realistic ranges for:
   - Cytokines (BMP4, ActivinA, FGF2, Wnt3a)

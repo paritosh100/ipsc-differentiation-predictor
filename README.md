@@ -1,61 +1,91 @@
 
-# iPSC Differentiation Predictor
+# 🧬 iPSC Differentiation Outcome Predictor
 
-This project is a science-meets-data exploration aimed at improving how we grow stem cells in the lab.
-
----
-
-## 🧬 What Is This About?
-
-Scientists grow stem cells (specifically iPSCs — induced pluripotent stem cells) in the lab to turn them into different types of tissues — like neurons, liver cells, or heart cells. But getting the best quality cells depends on *how* you grow them: which proteins you add, how much oxygen is in the dish, how many cells you start with, and more.
-
-This project builds a simulation of those lab conditions and uses data science to figure out:
-
-- What makes some cell batches healthier than others?
-- Which combinations of lab conditions give the best results?
-- Can we predict the success of an experiment before it happens?
+This project simulates and models the process of differentiating induced pluripotent stem cells (iPSCs) into specific cell types under various experimental protocols. It aims to **predict quality metrics** like **Purity, Viability, and Yield** using cytokine levels, oxygen concentration, seeding density, and gene expression markers.
 
 ---
 
-## 📊 What Did We Build?
+## 📁 Project Structure
 
-- A **simulated dataset** based on real-world biology
-- Tools to **analyze patterns** in how stem cells grow
-- A plan for using **machine learning** to predict and improve future experiments
-
-Even though the data is synthetic (not from a real lab), it's based on real scientific principles — so it's a safe way to test ideas.
-
----
-
-## 👩‍💻 What's Inside?
-
-- **01_data_generation.ipynb** — creates mock data based on biology
-- **02_eda.ipynb** — explores how lab inputs affect outcomes
-- **03_modeling.ipynb** — (coming soon) predicts stem cell quality
-- **04_dashboard.py** — (coming soon) an app to test your own lab recipes
+| File | Purpose |
+|------|---------|
+| `01_data_generation.ipynb` | Simulates biologically inspired dataset for iPSC differentiation |
+| `02_eda.ipynb` | Performs EDA: nulls, ranges, distributions, correlation matrix with heatmap |
+| `03_modeling.ipynb` | Builds and compares predictive models (Linear, XGBoost, RF, MLP, TabNet) |
+| `README.md` | Project overview and interpretation |
+| `.gitignore` | Excludes virtualenv, system files from version control |
 
 ---
 
-## 🎯 Why Does It Matter?
+## 📊 What This Project Does
 
-This project shows how data can help scientists:
-- Save time and money in experiments
-- Make better decisions about lab protocols
-- Bring stem cell therapies to patients faster
-
-It’s inspired by real biotech companies working at the edge of biology and AI.
+- Simulates data for 120 iPSC differentiation batches with realistic ranges for:
+  - Cytokines (BMP4, ActivinA, FGF2, Wnt3a)
+  - Culture conditions (O₂ level, seeding density, passage number)
+  - Gene expression levels (SOX2, NANOG, CDX2, NEUROD1, etc.)
+  - Output outcomes: **Purity**, **Viability**, **Yield**
+- Explores relationships using **Pearson correlation with p-values**
+- Models outcome (e.g. Purity) using:
+  - **Linear Regression**
+  - **XGBoost**
+  - **Random Forest**
+  - **MLP Neural Network**
+  - (Upcoming) **TabNet**
+- Evaluates and compares performance using:
+  - **R²** (coefficient of determination)
+  - **MAE** (mean absolute error)
+  - **RMSE** (root mean square error)
+- Visualizes feature importance to understand biological drivers of success
 
 ---
 
-## ✅ How To Use
+## 🧠 Model Comparison (Purity Prediction)
 
-If you’re a developer, data scientist, or student:
-1. Clone this repo
-2. Install Python libraries
-3. Open the notebooks and explore step-by-step
+| Model              | R² (↑) | MAE (↓) | RMSE (↓) |
+|-------------------|--------|---------|----------|
+| Linear Regression | 0.8491 | 1.7373  | 2.0581   |
+| XGBoost           | 0.8438 | 1.8502  | 2.0940   |
+| Random Forest     | 0.870+ | ~1.55   | ~1.90    |
+| MLP (Neural Net)  | 0.50   | 3.30+   | 3.80+    |
+
+📌 **Linear Regression** surprisingly outperformed XGBoost, suggesting the relationships in this data are mostly linear.  
+📌 **Random Forest** performed even better, capturing slight nonlinearities.  
+📌 **MLP** underperformed due to sensitivity to scaling and the small dataset size.
+
+---
+
+## 🧪 For Non-Technical Readers
+
+Imagine you're trying to cook the perfect dish using different ingredients. You vary the amounts of spices, the cooking temperature, and time — and record the outcome.
+
+This project does the same, but for **stem cell experiments**. It analyzes how changing **inputs** (like BMP4 levels or gene activity) affects **results** (like how many cells turned into the right type, or how pure and alive they are).
+
+We use different types of AI models to predict and optimize these outcomes. Some models are simple (like drawing a straight line), and some are more advanced (like decision trees or neural networks that mimic how the brain works).
+
+---
+
+## 🛠 How to Use
+
+1. Clone the repo
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+3. Run notebooks in order:
+   - Start with `01_data_generation.ipynb`
+   - Then `02_eda.ipynb`
+   - Then `03_modeling.ipynb`
+
+---
+
+## 🔭 Future Work
+
+- Add TabNet deep learning model with attention
+- SHAP explainability for model transparency
+- Streamlit dashboard for live protocol simulation
 
 ---
 
 ## 📜 License
 
-Open-source, MIT License — free to use for learning or building!
+MIT License — free for personal and commercial use with attribution.

@@ -16,12 +16,7 @@ This project simulates and models the process of differentiating induced pluripo
 | `.gitignore` | Excludes virtualenv, system files from version control |
 
 ---
-
-<<<<<<< HEAD
-## 📊 What This Project Does
-=======
 ## 📊 What Did I Build?
->>>>>>> a8b7cd5b9250ae9c3f4628d8af8f78343cecada5
 
 - Simulates data for 120 iPSC differentiation batches with realistic ranges for:
   - Cytokines (BMP4, ActivinA, FGF2, Wnt3a)
@@ -60,7 +55,7 @@ This project simulates and models the process of differentiating induced pluripo
 
 ## 🧪 For Non-Technical Readers
 
-Imagine you're trying to cook the perfect dish using different ingredients. You vary the amounts of spices, the cooking temperature, and time — and record the outcome.
+Imagine you're trying to cook the perfect dish using different ingredients. You vary the amounts of spices, the cooking temperature, and time, and record the outcome.
 
 This project does the same, but for **stem cell experiments**. It analyzes how changing **inputs** (like BMP4 levels or gene activity) affects **results** (like how many cells turned into the right type, or how pure and alive they are).
 

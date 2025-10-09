@@ -10,81 +10,75 @@ This project simulates and models the process of differentiating induced pluripo
 | File | Purpose |
 |------|---------|
 | `01_data_generation.ipynb` | Simulates biologically inspired dataset for iPSC differentiation |
-| `02_eda.ipynb` | Performs EDA: nulls, ranges, distributions, correlation matrix with heatmap |
-| `03_modeling.ipynb` | Builds and compares predictive models (Linear, XGBoost, RF, MLP, TabNet) |
-| `README.md` | Project overview and interpretation |
+| `02_eda.ipynb` | Performs EDA: nulls, ranges, distributions, correlation matrix |
+| `03_modeling.ipynb` | Builds and compares ML models |
+| `app.py` | Streamlit app for interactive prediction |
+| `models/` | Saved ML models |
+| `data/` | Raw and cleaned data |
+| `README.md` | Project overview and insight |
 | `.gitignore` | Excludes virtualenv, system files from version control |
 
 ---
-## 📊 What Did I Build?
 
-- Simulates data for 120 iPSC differentiation batches with realistic ranges for:
-  - Cytokines (BMP4, ActivinA, FGF2, Wnt3a)
-  - Culture conditions (O₂ level, seeding density, passage number)
-  - Gene expression levels (SOX2, NANOG, CDX2, NEUROD1, etc.)
-  - Output outcomes: **Purity**, **Viability**, **Yield**
-- Explores relationships using **Pearson correlation with p-values**
-- Models outcome (e.g. Purity) using:
-  - **Linear Regression**
-  - **XGBoost**
-  - **Random Forest**
-  - **MLP Neural Network**
-  - (Upcoming) **TabNet**
-- Evaluates and compares performance using:
-  - **R²** (coefficient of determination)
-  - **MAE** (mean absolute error)
-  - **RMSE** (root mean square error)
-- Visualizes feature importance to understand biological drivers of success
+## 🧠 Project Summary
+
+- Simulated data for 120 iPSC differentiation experiments
+- Features: cytokine levels, culture conditions, gene expression
+- Target: Predicting **Purity** (0–100%)
+- Applied multiple machine learning models:
+  - Linear Regression
+  - XGBoost
+  - Random Forest
+  - MLP Neural Network
+  - TabNet (deep learning model for tabular data)
 
 ---
 
-## 🧠 Model Comparison (Purity Prediction)
+## 📊 Final Model Comparison
 
-| Model              | R² (↑) | MAE (↓) | RMSE (↓) |
-|-------------------|--------|---------|----------|
-| Linear Regression | 0.8491 | 1.7373  | 2.0581   |
-| XGBoost           | 0.8438 | 1.8502  | 2.0940   |
-| Random Forest     | 0.870+ | ~1.55   | ~1.90    |
-| MLP (Neural Net)  | 0.50   | 3.30+   | 3.80+    |
+| Model              | R²     | MAE    | RMSE   |
+|-------------------|--------|--------|--------|
+| Linear Regression | 0.8491 | 1.7373 | 2.0581 |
+| XGBoost           | 0.8438 | 1.8502 | 2.0940 |
+| Random Forest     | **0.8718** | **1.5575** | **1.8968** |
+| MLP (Neural Net)  | 0.4996 | 3.3232 | 3.7478 |
+| TabNet (Optimized)| 0.8622 | 1.5711 | 1.9670 |
 
-📌 **Linear Regression** surprisingly outperformed XGBoost, suggesting the relationships in this data are mostly linear.  
-📌 **Random Forest** performed even better, capturing slight nonlinearities.  
-📌 **MLP** underperformed due to sensitivity to scaling and the small dataset size.
+📌 **Random Forest** performed the best overall, with the lowest error and highest R².  
+📌 **TabNet**, after tuning, performed very competitively.  
+📌 **MLP** underperformed due to the small dataset and scaling sensitivity.
+
+🖼️ ![Model Comparison](model_comparison_final.png)
 
 ---
 
 ## 🧪 For Non-Technical Readers
 
-Imagine you're trying to cook the perfect dish using different ingredients. You vary the amounts of spices, the cooking temperature, and time, and record the outcome.
+Think of this as an AI assistant for stem cell researchers.  
+You feed in your experiment settings — like how much BMP4 to use or what oxygen level — and it predicts how successful your cell conversion will be.
 
-This project does the same, but for **stem cell experiments**. It analyzes how changing **inputs** (like BMP4 levels or gene activity) affects **results** (like how many cells turned into the right type, or how pure and alive they are).
-
-We use different types of AI models to predict and optimize these outcomes. Some models are simple (like drawing a straight line), and some are more advanced (like decision trees or neural networks that mimic how the brain works).
-
----
-
-## 🛠 How to Use
-
-1. Clone the repo
-2. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
-3. Run notebooks in order:
-   - Start with `01_data_generation.ipynb`
-   - Then `02_eda.ipynb`
-   - Then `03_modeling.ipynb`
+It’s like a recipe predictor: tweak the ingredients, see how good the dish might turn out!
 
 ---
 
-## 🔭 Future Work
+## 🖥️ Interactive App
 
-- Add TabNet deep learning model with attention
-- SHAP explainability for model transparency
-- Streamlit dashboard for live protocol simulation
+You can try different protocol settings in the interactive dashboard:
+
+> Run: `streamlit run app.py`
+
+Or open the file directly to test model predictions on custom input.
+
+---
+
+## 🔭 Future Additions
+
+- SHAP explainability (Why the model predicts what it does)
+- Add tabs for Viability & Yield prediction
+- Deploy app online via Streamlit Cloud or Hugging Face Spaces
 
 ---
 
 ## 📜 License
 
-MIT License — free for personal and commercial use with attribution.
+MIT License — free to use with attribution.

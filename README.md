@@ -40,7 +40,7 @@ This project simulates and models the process of differentiating induced pluripo
 |-------------------|--------|--------|--------|
 | Linear Regression | 0.8491 | 1.7373 | 2.0581 |
 | XGBoost           | 0.8438 | 1.8502 | 2.0940 |
-| Random Forest     | **0.8718** | **1.5575** | **1.8968** |
+| **Random Forest**     | **0.8718** | **1.5575** | **1.8968** |
 | MLP (Neural Net)  | 0.4996 | 3.3232 | 3.7478 |
 | TabNet | -5.832 | 12.7414 | 13.8478 |
 | TabNet (Optimized)| 0.8622 | 1.5711 | 1.9670 |

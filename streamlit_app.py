@@ -8,6 +8,10 @@ st.set_page_config(page_title="iPSC Purity Predictor", layout="wide")
 
 # Load model
 model = joblib.load("models/best_model_rf.pkl")  # Update path if needed
+rf_purity = joblib.load("models/rf_purity.pkl")
+rf_viability = joblib.load("models/rf_viability.pkl")
+rf_yield = joblib.load("models/rf_yield.pkl")
+
 # Title & description
 st.title("🧬 iPSC Differentiation Outcome Predictor")
 st.markdown("""
@@ -45,24 +49,38 @@ with tab1:
 
         submitted = st.form_submit_button("🔮 Predict Purity")
 
-        if submitted:
-            inputs = pd.DataFrame([{
-                'BMP4': BMP4,
-                'ActivinA': ActivinA,
-                'FGF2': FGF2,
-                'Wnt3a': Wnt3a,
-                'O2_Level': O2_Level,
-                'Seeding_Density': Seeding_Density,
-                'Passage_Number': Passage_Number,
-                'SOX2': SOX2,
-                'NANOG': NANOG,
-                'POU5F1': POU5F1,
-                'CDX2': CDX2,
-                'NEUROD1': NEUROD1
-            }])
-            prediction = model.predict(inputs)[0]
+    if submitted:
+        inputs = pd.DataFrame([{
+            'BMP4': BMP4,
+            'ActivinA': ActivinA,
+            'FGF2': FGF2,
+            'Wnt3a': Wnt3a,
+            'O2_Level': O2_Level,
+            'Seeding_Density': Seeding_Density,
+            'Passage_Number': Passage_Number,
+            'SOX2': SOX2,
+            'NANOG': NANOG,
+            'POU5F1': POU5F1,
+            'CDX2': CDX2,
+            'NEUROD1': NEUROD1
+        }])
+        pred_purity = rf_purity.predict(inputs)[0]
+        pred_viability = rf_viability.predict(inputs)[0]
+        pred_yield = rf_yield.predict(inputs)[0]
 
-            st.success(f"🎯 Predicted Purity: **{prediction:.2f}%**")
+        col1, col2, col3 = st.columns(3)
+        col1.metric("🎯 Predicted Purity (%)", f"{pred_purity:.2f}")
+        col2.metric("🧪 Viability (%)", f"{pred_viability:.2f}")
+        col3.metric("📦 Yield (%)", f"{pred_yield:.2f}")
+        with st.expander("📋 View Input Parameters Used"):
+            st.dataframe(inputs.style.format("{:.2f}"))
+        inputs["Predicted_Purity"] = pred_purity
+        inputs["Predicted_Viability"] = pred_viability
+        inputs["Predicted_Yield"] = pred_yield
+
+        csv = inputs.to_csv(index=False).encode("utf-8")
+
+        st.download_button("📥 Download Results as CSV", data=csv, file_name="prediction_result.csv", mime="text/csv")
 
 with tab2:
     st.header("🧠 How the Model Works")

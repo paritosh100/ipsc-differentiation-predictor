@@ -17,14 +17,6 @@ We've built a smart, interactive dashboard that predicts:
 All based on inputs like cytokine concentrations, oxygen levels, seeding density, and gene expression markers.
 
 ---
-
-## 🎯 Try the App
-
-👉 [Launch the Streamlit App](https://your-streamlit-app-url.streamlit.app/)  
-Interactively test different stem cell protocols and see predicted outcomes in real time.
-
----
-
 ## 🧪 What This Does
 
 This tool helps:

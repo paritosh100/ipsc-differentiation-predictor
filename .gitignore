@@ -1,6 +1,8 @@
 # ========================
 # General
 # ========================
+
+.gitignore
 .DS_Store
 Thumbs.db
 desktop.ini
@@ -54,13 +56,13 @@ Pipfile.lock
 *.out
 *.bak
 *.tmp
-*.csv
+# *.csv
 *.tsv
 
 # Ignore large generated files (optional)
 *.h5
 *.npy
-*.pkl
+# *.pkl
 *.rds
 
 # ========================

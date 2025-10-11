@@ -1,8 +1,7 @@
 
 # 🧬 iPSC Differentiation Outcome Predictor
 
-[![Streamlit App](https://img.shields.io/badge/Launch%20App-Streamlit-ff4b4b?logo=streamlit)](https://your-streamlit-app-url.streamlit.app/)
-[![View Code on GitHub](https://img.shields.io/badge/GitHub-Repo-000?logo=github)](https://github.com/yourusername/ipsc-differentiation-predictor)
+[![Streamlit App](https://img.shields.io/badge/Launch%20App-Streamlit-ff4b4b?logo=streamlit)](https://ipsc-differentiation-predictor.streamlit.app/)
 
 ---
 

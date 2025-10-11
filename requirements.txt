@@ -2,8 +2,8 @@ streamlit==1.28.2
 joblib
 scikit-learn
 pandas
-numpy
 matplotlib
+numpy
 seaborn
 xgboost
-pytorch-tabnet
+pytorch_tabnet

@@ -1,85 +1,112 @@
 
 # 🧬 iPSC Differentiation Outcome Predictor
 
-This project simulates and models the process of differentiating induced pluripotent stem cells (iPSCs) into specific cell types under various experimental protocols. It aims to **predict quality metrics** like **Purity, Viability, and Yield** using cytokine levels, oxygen concentration, seeding density, and gene expression markers.
+[![Streamlit App](https://img.shields.io/badge/Launch%20App-Streamlit-ff4b4b?logo=streamlit)](https://your-streamlit-app-url.streamlit.app/)
+[![View Code on GitHub](https://img.shields.io/badge/GitHub-Repo-000?logo=github)](https://github.com/yourusername/ipsc-differentiation-predictor)
 
 ---
 
-## 📁 Project Structure
+## 🔍 Overview
 
-| File | Purpose |
-|------|---------|
-| `01_data_generation.ipynb` | Simulates biologically inspired dataset for iPSC differentiation |
-| `02_eda.ipynb` | Performs EDA: nulls, ranges, distributions, correlation matrix |
-| `03_modeling.ipynb` | Builds and compares ML models |
-| `app.py` | Streamlit app for interactive prediction |
-| `models/` | Saved ML models |
-| `data/` | Raw and cleaned data |
-| `README.md` | Project overview and insight |
-| `.gitignore` | Excludes virtualenv, system files from version control |
+This project simulates and predicts the outcomes of **iPSC (Induced Pluripotent Stem Cell) differentiation protocols** using machine learning.
+
+We've built a smart, interactive dashboard that predicts:
+- **Purity** (% of desired cell types)
+- **Viability** (how many cells survive)
+- **Yield** (overall success rate of protocol)
+
+All based on inputs like cytokine concentrations, oxygen levels, seeding density, and gene expression markers.
 
 ---
 
-## 🧠 Project Summary
+## 🎯 Try the App
 
-- Simulated data for 120 iPSC differentiation experiments
-- Features: cytokine levels, culture conditions, gene expression
-- Target: Predicting **Purity** (0–100%)
-- Applied multiple machine learning models:
-  - Linear Regression
-  - XGBoost
-  - Random Forest
-  - MLP Neural Network
-  - TabNet (deep learning model for tabular data)
+👉 [Launch the Streamlit App](https://your-streamlit-app-url.streamlit.app/)  
+Interactively test different stem cell protocols and see predicted outcomes in real time.
 
 ---
 
-## 📊 Final Model Comparison
+## 🧪 What This Does
 
-| Model              | R²     | MAE    | RMSE   |
-|-------------------|--------|--------|--------|
-| Linear Regression | 0.8491 | 1.7373 | 2.0581 |
-| XGBoost           | 0.8438 | 1.8502 | 2.0940 |
-| **Random Forest**     | **0.8718** | **1.5575** | **1.8968** |
-| MLP (Neural Net)  | 0.4996 | 3.3232 | 3.7478 |
-| TabNet | -5.832 | 12.7414 | 13.8478 |
-| TabNet (Optimized)| 0.8622 | 1.5711 | 1.9670 |
-
-📌 **Random Forest** performed the best overall, with the lowest error and highest R².  
-📌 **TabNet**, after tuning, performed very competitively.  
-📌 **MLP** underperformed due to the small dataset and scaling sensitivity.
-
-🖼️ ![Model Comparison](model_comparison_final.png)
+This tool helps:
+- **Researchers** simulate new experimental protocols
+- **Biotech teams** optimize stem cell yields
+- **Students** understand the impact of protocol decisions on cell outcomes
 
 ---
 
-## 🧪 For Non-Technical Readers
+## 💡 How It Works
 
-Think of this as an AI assistant for stem cell researchers.  
-You feed in your experiment settings — like how much BMP4 to use or what oxygen level — and it predicts how successful your cell conversion will be.
+1. **Data Simulation**  
+   Synthetic datasets modeled on real biological parameters (e.g., BMP4, FGF2, SOX2)
 
-It’s like a recipe predictor: tweak the ingredients, see how good the dish might turn out!
+2. **Model Training**  
+   We trained several models including:
+   - Random Forest (🏆 best performer)
+   - XGBoost
+   - TabNet
+   - MLP Neural Network
 
----
+3. **Prediction Engine**  
+   The app uses the best model to generate predictions on user input.
 
-## 🖥️ Interactive App
-
-You can try different protocol settings in the interactive dashboard:
-
-> Run: `streamlit run app.py`
-
-Or open the file directly to test model predictions on custom input.
-
----
-
-## 🔭 Future Additions
-
-- SHAP explainability (Why the model predicts what it does)
-- Add tabs for Viability & Yield prediction
-- Deploy app online via Streamlit Cloud or Hugging Face Spaces
+4. **Dashboard App**  
+   Built with Streamlit for accessibility and ease-of-use — no coding needed!
 
 ---
 
-## 📜 License
+## 📊 Model Performance Summary
 
-MIT License — free to use with attribution.
+- **Random Forest** performed best overall
+- Metrics:
+
+```
+- Linear Regression — R²: 0.8491, MAE: 1.7373, RMSE: 2.0581
+- XGBoost — R²: 0.8438, MAE: 1.8502, RMSE: 2.0940
+- Random Forest — R²: 0.8718, MAE: 1.5575, RMSE: 1.8968 ✅
+- TabNet (Optimized) — R²: 0.8622, MAE: 1.5711, RMSE: 1.9670
+- MLP — R²: 0.4996, MAE: 3.3232, RMSE: 3.7478
+```
+
+---
+
+## 🛠️ Tech Stack
+
+- `Python`, `Pandas`, `NumPy`
+- `scikit-learn`, `XGBoost`, `pytorch-tabnet`
+- `Streamlit` for interactive app
+- `Joblib` for saving models
+
+---
+
+## 📁 Repo Structure
+
+```
+📦 ipsc-differentiation-predictor/
+├── notebooks/                  # Jupyter notebooks with training + analysis
+├── models/                     # Saved ML models
+├── data/                       # Simulated dataset
+├── streamlit_app.py            # Main app file
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## 📌 Project Status
+
+✅ Predicts Purity, Viability, and Yield  
+✅ Clean Streamlit interface  
+✅ Model comparison + exportable predictions  
+🔜 SHAP visualizations (coming soon)  
+🔜 Protocol optimizations + dashboard
+
+---
+
+## 👋 Want to Collaborate?
+
+Feel free to fork, open issues, or reach out. Happy to connect with folks in stem cell research, bioinformatics, or ML for biology!
+
+---
+
+© 2025 — Built with ❤️ for science and curiosity.

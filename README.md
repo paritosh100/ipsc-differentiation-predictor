@@ -1,7 +1,7 @@
 
 # 🧬 iPSC Differentiation Outcome Predictor
 
-[![Streamlit App](https://img.shields.io/badge/Launch%20App-Streamlit-ff4b4b?logo=streamlit)](https://ipsc-differentiation-predictor.streamlit.app/)
+[![Streamlit App](https://img.shields.io/badge/Launch%20App-Streamlit-ff4b4b?logo=streamlit)](https://your-streamlit-app-url.streamlit.app/)
 
 ---
 
@@ -17,6 +17,7 @@ We've built a smart, interactive dashboard that predicts:
 All based on inputs like cytokine concentrations, oxygen levels, seeding density, and gene expression markers.
 
 ---
+
 ## 🧪 What This Does
 
 This tool helps:
@@ -41,7 +42,13 @@ This tool helps:
 3. **Prediction Engine**  
    The app uses the best model to generate predictions on user input.
 
-4. **Dashboard App**  
+4. **SHAP Explanations (NEW)**  
+   We now include **SHAP (Shapley Additive Explanations)** visualizations to explain:
+   - Which features influence Purity predictions
+   - Waterfall breakdown for individual protocols
+   - Side-by-side visuals in Streamlit for interpretability
+
+5. **Dashboard App**  
    Built with Streamlit for accessibility and ease-of-use — no coding needed!
 
 ---
@@ -61,10 +68,10 @@ This tool helps:
 
 ---
 
-## 🛠️ Tech Stack
+## 📦 Tech Stack
 
 - `Python`, `Pandas`, `NumPy`
-- `scikit-learn`, `XGBoost`, `pytorch-tabnet`
+- `scikit-learn`, `XGBoost`, `pytorch-tabnet`, `SHAP`
 - `Streamlit` for interactive app
 - `Joblib` for saving models
 
@@ -88,9 +95,24 @@ This tool helps:
 
 ✅ Predicts Purity, Viability, and Yield  
 ✅ Clean Streamlit interface  
+✅ SHAP-based model explanations ✅  
 ✅ Model comparison + exportable predictions  
-🔜 SHAP visualizations (coming soon)  
 🔜 Protocol optimizations + dashboard
+
+---
+
+## 📈 Versioning / Changelog
+
+### 🔹 Version 1.0 – Pre-SHAP
+- Built ML models for Purity prediction
+- Developed and deployed Streamlit dashboard
+- Model comparison and feature importance using sklearn
+
+### 🔹 Version 1.1 – Post-SHAP
+- Added SHAP explanations for model interpretability
+- Global feature summary + waterfall plots for top protocol
+- Side-by-side SHAP visualization in Streamlit
+- Improved README and performance insights
 
 ---
 

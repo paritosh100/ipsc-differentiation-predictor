@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import joblib
+import shap
+import matplotlib.pyplot as plt
 
 # Page config
 st.set_page_config(page_title="iPSC Purity Predictor", layout="wide")
@@ -11,7 +13,15 @@ model = joblib.load("models/best_model_rf.pkl")  # Update path if needed
 rf_purity = joblib.load("models/rf_purity.pkl")
 rf_viability = joblib.load("models/rf_viability.pkl")
 rf_yield = joblib.load("models/rf_yield.pkl")
+df = pd.read_csv("./data/ipsc_differentiation_data_with_genes.csv")
+# Drop target and non-numeric columns
+X = pd.read_csv("./data/features_only.csv")
+X = X.astype(float)
 
+
+# Compute SHAP values
+explainer = shap.TreeExplainer(model, X)
+shap_values = explainer(X)
 # Title & description
 st.title("🧬 iPSC Differentiation Outcome Predictor")
 st.markdown("""
@@ -74,6 +84,26 @@ with tab1:
         col3.metric("📦 Yield (%)", f"{pred_yield:.2f}")
         with st.expander("📋 View Input Parameters Used"):
             st.dataframe(inputs.style.format("{:.2f}"))
+        with st.expander("🔍 SHAP Explanation for Purity Prediction"):
+            st.markdown("This SHAP summary plot shows which protocol inputs most influence the predicted purity.")
+
+                    # Define columns
+            col1, col2 = st.columns(2)
+
+            # 🎯 Global SHAP Summary Plot (left column)
+            with col1:
+                st.markdown("**Feature Impact (All Protocols)**")
+                fig_summary, ax = plt.subplots(figsize=(5, 4))  # Smaller size
+                shap.summary_plot(shap_values, X, show=False)
+                st.pyplot(fig_summary)
+
+            # 🔬 Local SHAP Waterfall Plot (right column)
+            with col2:
+                st.markdown("**Top Protocol Breakdown**")
+                best_index = df["Purity"].idxmax()
+                fig_waterfall = plt.figure(figsize=(5, 4))  # Smaller size
+                shap.plots.waterfall(shap_values[best_index], show=False)
+                st.pyplot(fig_waterfall)
         inputs["Predicted_Purity"] = pred_purity
         inputs["Predicted_Viability"] = pred_viability
         inputs["Predicted_Yield"] = pred_yield
